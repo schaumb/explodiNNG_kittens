@@ -22,6 +22,11 @@ public class KittyBox : MonoBehaviour{
         renderer.material = Material;
     }
 
+    public void OnClick()
+    {
+        Debug.Log("Cube selected");
+    }
+    
     // Use this for initialization
     void Start () {
 		
