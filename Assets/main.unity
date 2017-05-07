@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6edceafd4f365048acb686d9ec8157a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Store:
+  Boxes:
   - {fileID: 1540751794}
   - {fileID: 292425552}
   - {fileID: 1182938360}

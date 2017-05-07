@@ -8,6 +8,8 @@ public class KittyBox : MonoBehaviour{
     public Material MaterialOnSelection;
     public Material Material;
 
+    private MemoryStore memoryStore;
+
     public void OnGazeIn()
     {
         var renderer = this.GetComponent<Renderer>();
@@ -24,12 +26,12 @@ public class KittyBox : MonoBehaviour{
 
     public void OnClick()
     {
-        Debug.Log(string.Format("Box selected with name: {0}", this.name));
+        memoryStore.Selected(this);
     }
     
     // Use this for initialization
     void Start () {
-		
+        this.memoryStore = GameObject.Find("MemoryLogic").GetComponent<MemoryStore>();
 	}
 	
 	// Update is called once per frame
