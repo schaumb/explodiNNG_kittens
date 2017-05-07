@@ -10,21 +10,21 @@ public class KittyBox : MonoBehaviour{
 
     public void OnGazeIn()
     {
-        var renderer = GetComponent<Renderer>();
+        var renderer = this.GetComponent<Renderer>();
 
-        renderer.material = MaterialOnSelection;
+        renderer.material = this.MaterialOnSelection;
     }
 
     public void OnGazeOut()
     {
-        var renderer = GetComponent<Renderer>();
+        var renderer = this.GetComponent<Renderer>();
 
-        renderer.material = Material;
+        renderer.material = this.Material;
     }
 
     public void OnClick()
     {
-        Debug.Log("Cube selected");
+        Debug.Log(string.Format("Box selected with name: {0}", this.name));
     }
     
     // Use this for initialization
