@@ -7,6 +7,7 @@ public class KittyBox : MonoBehaviour{
 
     public Material MaterialOnSelection;
     public Material Material;
+    public Material MaterialClicked;
 
     private MemoryStore memoryStore;
 
@@ -26,6 +27,8 @@ public class KittyBox : MonoBehaviour{
 
     public void OnClick()
     {
+        var renderer = this.GetComponent<Renderer>();
+        renderer.material = this.MaterialClicked;
         memoryStore.Selected(this);
     }
     
