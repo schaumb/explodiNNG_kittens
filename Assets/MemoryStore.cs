@@ -12,18 +12,24 @@ public class MemoryStore : MonoBehaviour
     public Material[] Colors;
     public Text winText;
     public Text scoreText;
+    public Button playAgainButton;
 
-    public Dictionary<KittyBox, KittyBox> MemoryPairs = new Dictionary<KittyBox, KittyBox>();
+    public Dictionary<KittyBox, KittyBox> MemoryPairs;
 
-    private KittyBox SelectedBox = null;
+    private KittyBox SelectedBox;
     private int pairNumber;
     private int foundPairs;
 
-    private Boolean waitingActive = false;
+    private Boolean waitingActive;
 
     // Use this for initialization
     void Start()
     {
+        init();
+    }
+
+    public void init() {
+        MemoryPairs = new Dictionary<KittyBox, KittyBox>();
         GameObject[] RandomizedBoxes = Boxes.OrderBy(box => UnityEngine.Random.Range(0, Boxes.Length)).ToArray();
         pairNumber = RandomizedBoxes.Length / 2;
 
@@ -31,6 +37,9 @@ public class MemoryStore : MonoBehaviour
         {
             var pairOne = RandomizedBoxes[i].GetComponent<KittyBox>();
             var pairTwo = RandomizedBoxes[i + 8].GetComponent<KittyBox>();
+
+            pairOne.init();
+            pairTwo.init();
 
             var insideSpherePairOne = RandomizedBoxes[i].transform.Find("Sphere").gameObject.GetComponent<Renderer>();
             insideSpherePairOne.material = Colors[i];
@@ -42,8 +51,11 @@ public class MemoryStore : MonoBehaviour
         }
 
         winText.gameObject.SetActive(false);
+        playAgainButton.gameObject.SetActive(false);
         foundPairs = 0;
         setScoreText();
+        SelectedBox = null;
+        waitingActive = false;
     }
 
     internal void OnSelect(KittyBox kittyBox)
@@ -110,6 +122,7 @@ public class MemoryStore : MonoBehaviour
         if (foundPairs == pairNumber)
         {
             winText.gameObject.SetActive(true);
+            playAgainButton.gameObject.SetActive(true);
         }
     }
 }
