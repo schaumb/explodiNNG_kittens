@@ -40,11 +40,6 @@ public class KittyBox : MonoBehaviour{
     void Start () {
         this.memoryStore = GameObject.Find("MemoryLogic").GetComponent<MemoryStore>();
         this.renderer = this.GetComponent<Renderer>();
-        init();
-    }
-
-    public void init()
-    {
         this.renderer.material = this.Material;
         this.selected = false;
     }

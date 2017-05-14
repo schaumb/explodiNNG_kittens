@@ -12,7 +12,6 @@ public class MemoryStore : MonoBehaviour
     public Material[] Colors;
     public Text winText;
     public Text scoreText;
-    public Button playAgainButton;
 
     public Dictionary<KittyBox, KittyBox> MemoryPairs;
 
@@ -38,9 +37,6 @@ public class MemoryStore : MonoBehaviour
             var pairOne = RandomizedBoxes[i].GetComponent<KittyBox>();
             var pairTwo = RandomizedBoxes[i + 8].GetComponent<KittyBox>();
 
-            pairOne.init();
-            pairTwo.init();
-
             var insideSpherePairOne = RandomizedBoxes[i].transform.Find("Sphere").gameObject.GetComponent<Renderer>();
             insideSpherePairOne.material = Colors[i];
             var insideSpherePairTwo = RandomizedBoxes[i + 8].transform.Find("Sphere").gameObject.GetComponent<Renderer>();
@@ -51,7 +47,6 @@ public class MemoryStore : MonoBehaviour
         }
 
         winText.gameObject.SetActive(false);
-        playAgainButton.gameObject.SetActive(false);
         foundPairs = 0;
         setScoreText();
         SelectedBox = null;
@@ -122,7 +117,6 @@ public class MemoryStore : MonoBehaviour
         if (foundPairs == pairNumber)
         {
             winText.gameObject.SetActive(true);
-            playAgainButton.gameObject.SetActive(true);
         }
     }
 }
